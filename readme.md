@@ -9,8 +9,10 @@ On the different fora for Jaguar owners there have been reports on suspicious no
 The noise in a Jaguar IPace seems to be dependent upon whether you have a glass roof or a hard roof.  The effect is most easily noticed when driving in tunnels.
 
 Einar Sjaavik took an initiative to start measuring these things, and since we have nearly identical cars, and we both are very interested in measurement technology, we decided to give this a run.  Our cars just differ on what roof we have :-).
+<p align="center">
+  <img src="Images/20191121_174904.jpg" width="350" />
+</p>
 
-![](Images/20191121_174904.jpg)
 
 ## Live measurements : Take 1
 
