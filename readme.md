@@ -17,7 +17,7 @@ Einar Sjaavik took an initiative to start measuring these things, and since we h
 ## Live measurements : Take 1
 
 The first run we did we measured live in a tunnel.  The tunnel had traffic in both directions, so we didn't get results that where absolutely stable.  
-What we did notice though was that the glass roof seemed around 6dB more quiet than the hard roof.
+What we did notice though was that the glass roof seemed about 6dB more quiet than the hard roof.
 
 ## Live measurements : Take 2
 
@@ -30,4 +30,4 @@ We then brought the cars indoors where we had a sound rig where we could inject 
 ![](Images/20191121_163742.jpg?raw=true)
 
 
-TO BE CONTINUED when we have all the results analyzed. 
+TO BE CONTINUED when we have all the results analyzed.
