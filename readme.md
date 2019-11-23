@@ -10,7 +10,7 @@ The noise in a Jaguar IPace seems to be dependent upon whether you have a glass 
 
 Einar Sjaavik took an initiative to start measuring these things, and since we have nearly identical cars, and we both are very interested in measurement technology, we decided to give this a run.  Our cars just differ on what roof we have :-).
 
-![](Images/20191121_174904.jpg?raw=true)
+![](Images/20191121_174904.jpg)
 
 ## Live measurements : Take 1
 
