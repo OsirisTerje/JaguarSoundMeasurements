@@ -34,11 +34,23 @@ We then brought the cars indoors where we had a sound rig where we could inject 
 
 ### Results from first set of measurements, where we measure from 500 Hz to 3 kHz
 
+We used a stereo microphone recorder, both mics pointing upwards, but slightly front and rear respectively. 
+
 Note:  Have only the data in for up to 1.5 kHz
+
+Channel 1:
 
 ![](result.png)
 
+Channel 2:
+![](result-ch2.png)
+
 ### Results from second set of measurements, where we measure from 100 Hz to 1 kHz
 
+Channel 1:
 
 ![](resultLF.png)
+
+Channel 2:
+
+![](resultLF-ch2.png)
