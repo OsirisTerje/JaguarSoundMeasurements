@@ -57,7 +57,9 @@ def calcFFT(channel,rate,frate):
     #print ("Max Value 2 "+str(maxVal))
     return fourier,freqArray,idx,maxFreq,maxVal,
 
-def process(file,result,freqa,vala):
+i=0
+
+def process(file,result,freqa,vala,res,i):
     sound = pydub.AudioSegment.from_file(file+".wav",format="wav")
     #printinfo(sound)
     # From http://myinspirationinformation.com/uncategorized/audio-signals-in-python/
@@ -77,12 +79,16 @@ def process(file,result,freqa,vala):
     # smaxv = str('%.2f'%maxv)
     # smaxfr = str('%.1f'%maxfr)
     #print ("Max db value:  "+smaxv+ "dB at "+smaxfr+" Hz")
+    res[i,0]=maxfr
+    res[i,1]=maxv
+    i = i+1
     result.append((file,maxfr,maxv))
     freqa.append(maxfr)
     vala.append(maxv)
+    return i
 
-
-res =np.zeros((10))
+i=0
+res =np.zeros((10,2))
 
 
 
@@ -91,41 +97,45 @@ result = []
 freq = []
 val = []
 
-process("TerjesBil-1K0",result,freq,val)
-process("TerjesBil-1K2",result,freq,val)
-process("TerjesBil-1K4",result,freq,val)
-process("TerjesBil-1K6",result,freq,val)
-process("TerjesBil-1K8",result,freq,val)
-process("TerjesBil-2K0",result,freq,val)
-process("TerjesBil-2K2",result,freq,val)
-process("TerjesBil-2K4",result,freq,val)
-process("TerjesBil-2K6",result,freq,val)
-process("TerjesBil-2K8",result,freq,val)
+i=process("TerjesBil-1K0",result,freq,val,res,i)
+i=process("TerjesBil-1K2",result,freq,val,res,i)
+i=process("TerjesBil-1K4",result,freq,val,res,i)
+i=process("TerjesBil-1K6",result,freq,val,res,i)
+i=process("TerjesBil-1K8",result,freq,val,res,i)
+i=process("TerjesBil-2K0",result,freq,val,res,i)
+i=process("TerjesBil-2K2",result,freq,val,res,i)
+i=process("TerjesBil-2K4",result,freq,val,res,i)
+i=process("TerjesBil-2K6",result,freq,val,res,i)
+i=process("TerjesBil-2K8",result,freq,val,res,i)
 #process("TerjesBil-3K0",result,freq,val)
 
-
+print (res)
 print(*result, sep='\n')
 f, ax = plt.subplots(1)
-ax.plot(freq,val,color='b')
+ax.plot(res[:,0],res[:,1],color='b')
 
 result = []
 freq = []
 val = []
+i=0
+res =np.zeros((10,2))
 
-process("EinarBil-1K0",result,freq,val)
-process("EinarBil-1K2",result,freq,val)
-process("EinarBil-1K4",result,freq,val)
-process("EinarBil-1K6",result,freq,val)
-process("EinarBil-1K8",result,freq,val)
-process("EinarBil-2K0",result,freq,val)
-process("EinarBil-2K2",result,freq,val)
-process("EinarBil-2K4",result,freq,val)
-process("EinarBil-2K6",result,freq,val)
-process("EinarBil-2K8",result,freq,val)
+
+
+i=process("EinarBil-1K0",result,freq,val,res,i)
+i=process("EinarBil-1K2",result,freq,val,res,i)
+i=process("EinarBil-1K4",result,freq,val,res,i)
+i=process("EinarBil-1K6",result,freq,val,res,i)
+i=process("EinarBil-1K8",result,freq,val,res,i)
+i=process("EinarBil-2K0",result,freq,val,res,i)
+i=process("EinarBil-2K2",result,freq,val,res,i)
+i=process("EinarBil-2K4",result,freq,val,res,i)
+i=process("EinarBil-2K6",result,freq,val,res,i)
+i=process("EinarBil-2K8",result,freq,val,res,i)
 
 ax.plot(freq,val,color='r')
 
 ax.set_ylim(bottom=0)
 ax.set_ybound(upper=50)
-ax.text("Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
+ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
 plt.show(f)
