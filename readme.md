@@ -30,4 +30,6 @@ We then brought the cars indoors where we had a sound rig where we could inject 
 ![](Images/20191121_163742.jpg?raw=true)
 
 
-TO BE CONTINUED when we have all the results analyzed.
+Results from first set of measurements, where we measure from 800H< to 3kHz
+
+![](result.png)
