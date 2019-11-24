@@ -90,12 +90,26 @@ def process(file,result,freqa,vala,res,i):
 
 
 def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
+    #defines the figure
+    plt.figure(1, figsize(12,10))
+    plt.subtitle('Relative sine wave noise injection Jaguar I-Pace')
+    #removes unnecessary axes
+    ax = plt.subplot(111)    
+    ax.spines["top"].set_visible(False)    
+    ax.spines["bottom"].set_visible(False)    
+    ax.spines["right"].set_visible(False)    
+    ax.spines["left"].set_visible(False)  
+    
+    
+    
     plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
     plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
+    plt.grid(color='lightgrey', ls = '--')
     plt.ylim(0,50) #should work as set_ylim and set_ybound in one
-    plt.title('Relative sine wave noise injection Jaguar I-Pace')
+    plt.yticks(range(0,51,1), [str(x)  if x%10 == 0 else ' ' for x in range(0,51,1)]) #defines ticks, with label at only each 10th
     plt.xlabel('Frequency')
     plt.ylabel('dB')
+    
     plt.legend() #do nothing here
     plt.show()    
 
