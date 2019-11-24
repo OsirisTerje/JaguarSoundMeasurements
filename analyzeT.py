@@ -88,6 +88,17 @@ def process(file,result,freqa,vala,res,i):
     vala.append(maxv)
     return i
 
+
+def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
+    plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
+    plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
+    plt.ylim(0,50) #should work as set_ylim and set_ybound in one
+    plt.title('Relative sine wave noise injection Jaguar I-Pace')
+    plt.xlabel('Frequency')
+    plt.ylabel('dB')
+    plt.legend() #do nothing here
+    plt.show()    
+
 i=0
 res =np.zeros((10,2))
 
@@ -112,43 +123,36 @@ i=process("TerjesBil-2K8",result,freq,val,res,i)
 
 print (res)
 print(*result, sep='\n')
-f, ax = plt.subplots(1)
-ax.plot(res[:,0],res[:,1],color='b')
+#f, ax = plt.subplots(1)
+#ax.plot(res[:,0],res[:,1],color='b')
 
 result = []
 freq = []
 val = []
 i=0
-res =np.zeros((10,2))
+res2 =np.zeros((10,2))
 
 
 
-i=process("EinarBil-1K0",result,freq,val,res,i)
-i=process("EinarBil-1K2",result,freq,val,res,i)
-i=process("EinarBil-1K4",result,freq,val,res,i)
-i=process("EinarBil-1K6",result,freq,val,res,i)
-i=process("EinarBil-1K8",result,freq,val,res,i)
-i=process("EinarBil-2K0",result,freq,val,res,i)
-i=process("EinarBil-2K2",result,freq,val,res,i)
-i=process("EinarBil-2K4",result,freq,val,res,i)
-i=process("EinarBil-2K6",result,freq,val,res,i)
-i=process("EinarBil-2K8",result,freq,val,res,i)
+i=process("EinarBil-1K0",result,freq,val,res2,i)
+i=process("EinarBil-1K2",result,freq,val,res2,i)
+i=process("EinarBil-1K4",result,freq,val,res2,i)
+i=process("EinarBil-1K6",result,freq,val,res2,i)
+i=process("EinarBil-1K8",result,freq,val,res2,i)
+i=process("EinarBil-2K0",result,freq,val,res2,i)
+i=process("EinarBil-2K2",result,freq,val,res2,i)
+i=process("EinarBil-2K4",result,freq,val,res2,i)
+i=process("EinarBil-2K6",result,freq,val,res2,i)
+i=process("EinarBil-2K8",result,freq,val,res2,i)
 
-ax.plot(freq,val,color='r')
+isabel_plot(res,res2,"Glass","Alum")
+#ax.plot(freq,val,color='r')
 
-ax.set_ylim(bottom=0)
-ax.set_ybound(upper=50)
-ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
+#ax.set_ylim(bottom=0)
+#ax.set_ybound(upper=50)
+#ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
 plt.show(f)
 
 
-def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
-    plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
-    plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
-    plt.ylim(0,50) #should work as set_ylim and set_ybound in one
-    plt.title('insert your title here')
-    plt.xlabel('insert x label here')
-    plt.ylabel('insert y label here')
-    plt.legend() #do nothing here
-    plt.show()
+
     
