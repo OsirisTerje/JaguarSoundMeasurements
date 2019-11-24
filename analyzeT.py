@@ -38,7 +38,7 @@ def plotFFT(freqArray,fourier,filename,idx):
     
 
 def calcFFT(channel,rate,frate):
-    fourier=fft.fft(channel)
+    fourier=fft.rfft(channel)
     n = int(np.abs(len(channel)/2))
     #print("Length of channel1 "+str(n))
     fourier = fourier[0:n]
@@ -47,21 +47,21 @@ def calcFFT(channel,rate,frate):
     #print("Length of final fourier array "+str(len(fourier)))
     maxValue = max(abs(fourier))
     #calculate the frequency at each point in Hz
-    freqArray = np.arange(0, (n), 1.0) * (rate*2.0/n)
-    freqs = np.fft.fftfreq(len(fourier))
+    #  --  freqArray = np.arange(0, (n), 1.0) * (rate*1.0/n)
+    freqs = np.fft.rfftfreq(len(channel))
     idx = np.argmax(np.abs(fourier))
     maxFreq = freqs[idx]*frate
     maxVal = abs(fourier[idx])
     # print ("Length of freqArray "+str(len(freqArray)))
     #print ("Max Value "+str('%.2f'%maxValue)+ " at "+str('%.2f'%maxFreq)+" Hz")
     #print ("Max Value 2 "+str(maxVal))
-    return fourier,freqArray,idx,maxFreq,maxVal,
+    return fourier,freqs,idx,maxFreq,maxVal,
 
 i=0
 
-def process(file,result,freqa,vala,res,i):
+def process(file,result,res,i):
     sound = pydub.AudioSegment.from_file(file+".wav",format="wav")
-    #printinfo(sound)
+    # printinfo(sound)
     # From http://myinspirationinformation.com/uncategorized/audio-signals-in-python/
     #read wav file
     rate,audData=scipy.io.wavfile.read(file+".wav")
@@ -84,12 +84,10 @@ def process(file,result,freqa,vala,res,i):
     res[i] = [maxfr, maxv]
     i += 1
     result.append((file,maxfr,maxv))
-    freqa.append(maxfr)
-    vala.append(maxv)
     return i
 
 
-def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult):
+def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult,startfreq,stopfreq):
     #defines the figure
     plt.figure(1, figsize=(12,10))
     plt.suptitle('Relative sine wave noise injection Jaguar I-Pace')
@@ -109,8 +107,8 @@ def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult):
     plt.yticks(range(0,51,1), [str(x)  if x%10 == 0 else ' ' for x in range(0,51,1)]) #defines ticks, with label at only each 10th
     
     #fixing the x-axis
-    plt.xlim(800, 2600)
-    plt.xticks(range(800,2601,200))
+    plt.xlim(startfreq, stopfreq)
+    plt.xticks(range(startfreq,stopfreq+1,200))
                
     #fixing the labels
     plt.xlabel('Frequency')
@@ -122,54 +120,75 @@ def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult):
 
 i=0
 res =np.zeros((10,2))
-
-
-
-
 result = []
-freq = []
-val = []
 
-i=process("TerjesBil-1K0",result,freq,val,res,i)
-i=process("TerjesBil-1K2",result,freq,val,res,i)
-i=process("TerjesBil-1K4",result,freq,val,res,i)
-i=process("TerjesBil-1K6",result,freq,val,res,i)
-i=process("TerjesBil-1K8",result,freq,val,res,i)
-i=process("TerjesBil-2K0",result,freq,val,res,i)
-i=process("TerjesBil-2K2",result,freq,val,res,i)
-i=process("TerjesBil-2K4",result,freq,val,res,i)
-i=process("TerjesBil-2K6",result,freq,val,res,i)
-i=process("TerjesBil-2K8",result,freq,val,res,i)
+i=process("TerjesBil-1K0",result,res,i)
+i=process("TerjesBil-1K2",result,res,i)
+i=process("TerjesBil-1K4",result,res,i)
+i=process("TerjesBil-1K6",result,res,i)
+i=process("TerjesBil-1K8",result,res,i)
+i=process("TerjesBil-2K0",result,res,i)
+i=process("TerjesBil-2K2",result,res,i)
+i=process("TerjesBil-2K4",result,res,i)
+i=process("TerjesBil-2K6",result,res,i)
+i=process("TerjesBil-2K8",result,res,i)
 #process("TerjesBil-3K0",result,freq,val)
 
-print (res)
 print(*result, sep='\n')
-#f, ax = plt.subplots(1)
-#ax.plot(res[:,0],res[:,1],color='b')
 
 result = []
-freq = []
-val = []
 i=0
 res2 =np.zeros((10,2))
 
 
 
-i=process("EinarBil-1K0",result,freq,val,res2,i)
-i=process("EinarBil-1K2",result,freq,val,res2,i)
-i=process("EinarBil-1K4",result,freq,val,res2,i)
-i=process("EinarBil-1K6",result,freq,val,res2,i)
-i=process("EinarBil-1K8",result,freq,val,res2,i)
-i=process("EinarBil-2K0",result,freq,val,res2,i)
-i=process("EinarBil-2K2",result,freq,val,res2,i)
-i=process("EinarBil-2K4",result,freq,val,res2,i)
-i=process("EinarBil-2K6",result,freq,val,res2,i)
-i=process("EinarBil-2K8",result,freq,val,res2,i)
+i=process("EinarBil-1K0",result,res2,i)
+i=process("EinarBil-1K2",result,res2,i)
+i=process("EinarBil-1K4",result,res2,i)
+i=process("EinarBil-1K6",result,res2,i)
+i=process("EinarBil-1K8",result,res2,i)
+i=process("EinarBil-2K0",result,res2,i)
+i=process("EinarBil-2K2",result,res2,i)
+i=process("EinarBil-2K4",result,res2,i)
+i=process("EinarBil-2K6",result,res2,i)
+i=process("EinarBil-2K8",result,res2,i)
 
-isabel_plot(res,res2,"Glass","Alum",'result.png')
+print(*result, sep='\n')
 
+isabel_plot(res,res2,"Glass","Alum",'result.png',400,2600)
 
+result = []
+i=0
+res =np.zeros((10,2))
 
+i=process("TerjeBilLF-100",result,res,i)
+i=process("TerjeBilLF-200",result,res,i)
+i=process("TerjeBilLF-300",result,res,i)
+i=process("TerjeBilLF-400",result,res,i)
+i=process("TerjeBilLF-500",result,res,i)
+i=process("TerjeBilLF-600",result,res,i)
+i=process("TerjeBilLF-700",result,res,i)
+i=process("TerjeBilLF-800",result,res,i)
+i=process("TerjeBilLF-900",result,res,i)
+i=process("TerjeBilLF-1000",result,res,i)
 
+print(*result, sep='\n')
 
-    
+result = []
+i=0
+res2 =np.zeros((10,2))
+
+i=process("EinarBilLF-100",result,res2,i)
+i=process("EinarBilLF-200",result,res2,i)
+i=process("EinarBilLF-300",result,res2,i)
+i=process("EinarBilLF-400",result,res2,i)
+i=process("EinarBilLF-500",result,res2,i)
+i=process("EinarBilLF-600",result,res2,i)
+i=process("EinarBilLF-700",result,res2,i)
+i=process("EinarBilLF-800",result,res2,i)
+i=process("EinarBilLF-900",result,res2,i)
+i=process("EinarBilLF-1000",result,res2,i)
+
+print(*result, sep='\n')
+
+isabel_plot(res,res2,"Glass","Alum",'resultLF.png',100,1000)    
