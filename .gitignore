@@ -1,6 +1,8 @@
 *.wav
 ![Tt]erjes[Bb]il-*.wav
 ![Ee]inar[Bb]il-*.wav
+![Tt]erjes[Bb]ilLF-*.wav
+![Ee]inar[Bb]ilLF-*.wav
 *.zip
 .vs/
 .vsCode/
