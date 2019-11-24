@@ -29,7 +29,8 @@ We then brought the cars indoors where we had a sound rig where we could inject 
 
 ![](Images/20191121_163742.jpg?raw=true)
 
-We used a [Zoom H5 Digital recorder](https://www.komplett.no/product/1009351/datautstyr/rekvisita/kontorutstyr/avskrivere-og-diktatsystemer/zoom-h5-digitalopptake).
+We used a stereo [Zoom H5 Digital recorder](https://www.komplett.no/product/1009351/datautstyr/rekvisita/kontorutstyr/avskrivere-og-diktatsystemer/zoom-h5-digitalopptake).
+
 The mics were oriented forward/rear, where the forward pointing mic is Channel 1 below, and the rear pointing mic is Channel 2.
 
 
@@ -37,7 +38,7 @@ The mics were oriented forward/rear, where the forward pointing mic is Channel 1
 
 ### Results from first set of measurements, where we measure from 500 Hz to 3 kHz
 
-We used a stereo microphone recorder, both mics pointing upwards, but slightly front and rear respectively.
+
 
 Note:  Have only the data in for up to 1.5 kHz
 
