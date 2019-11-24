@@ -91,8 +91,8 @@ def process(file,result,freqa,vala,res,i):
 
 def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
     #defines the figure
-    plt.figure(1, figsize(12,10))
-    plt.subtitle('Relative sine wave noise injection Jaguar I-Pace')
+    plt.figure(1, figsize=(12,10))
+    plt.suptitle('Relative sine wave noise injection Jaguar I-Pace')
     #removes unnecessary axes
     ax = plt.subplot(111)    
     ax.spines["top"].set_visible(False)    
