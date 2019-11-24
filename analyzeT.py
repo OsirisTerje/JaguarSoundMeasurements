@@ -79,9 +79,10 @@ def process(file,result,freqa,vala,res,i):
     # smaxv = str('%.2f'%maxv)
     # smaxfr = str('%.1f'%maxfr)
     #print ("Max db value:  "+smaxv+ "dB at "+smaxfr+" Hz")
-    res[i,0]=maxfr
-    res[i,1]=maxv
-    i = i+1
+    #res[i,0]=maxfr
+    #res[i,1]=maxv
+    res[i] = [maxfr, maxv]
+    i += 1
     result.append((file,maxfr,maxv))
     freqa.append(maxfr)
     vala.append(maxv)
