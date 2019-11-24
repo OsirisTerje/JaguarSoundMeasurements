@@ -66,13 +66,13 @@ def process(file,result,res,i):
     #read wav file
     rate,audData=scipy.io.wavfile.read(file+".wav")
 
-    channel1=audData[:,0] #left
-    # channel2=audData[:,1] #right
+    # channel1=audData[:,0] #left
+    channel2=audData[:,1] #right
     # time = np.arange(0, float(audData.shape[0]), 1) / rate
     # plotTimeDomain(time,channel1,channel2)
 
     # FFT
-    fourier,freqArray,idx,maxfr,maxval = calcFFT(channel1,rate,sound.frame_rate)
+    fourier,freqArray,idx,maxfr,maxval = calcFFT(channel2,rate,sound.frame_rate)
     # plotFFT(freqArray,fourier,file,idx)
     level = 10*np.log10(fourier)
     maxv = max(level.real)
@@ -155,7 +155,7 @@ i=process("EinarBil-2K8",result,res2,i)
 
 print(*result, sep='\n')
 
-isabel_plot(res,res2,"Glass","Alum",'result.png',400,2600)
+isabel_plot(res,res2,"Glass","Alum",'result-ch2.png',400,2600)
 
 result = []
 i=0
@@ -191,4 +191,4 @@ i=process("EinarBilLF-1000",result,res2,i)
 
 print(*result, sep='\n')
 
-isabel_plot(res,res2,"Glass","Alum",'resultLF.png',100,1000)    
+isabel_plot(res,res2,"Glass","Alum",'resultLF-ch2.png',100,1000)    
