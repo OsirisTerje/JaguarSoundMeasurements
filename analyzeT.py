@@ -89,7 +89,7 @@ def process(file,result,freqa,vala,res,i):
     return i
 
 
-def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
+def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult):
     #defines the figure
     plt.figure(1, figsize=(12,10))
     plt.suptitle('Relative sine wave noise injection Jaguar I-Pace')
@@ -110,13 +110,14 @@ def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
     
     #fixing the x-axis
     plt.xlim(800, 2600)
-    plt.xticks(range(800,2601,200)
+    plt.xticks(range(800,2601,200))
                
     #fixing the labels
     plt.xlabel('Frequency')
     plt.ylabel('dB', rotation='horizontal', position=(0.5,0.5))
     
     plt.legend() #do nothing here
+    plt.savefig(nameOfResult,format='png')
     plt.show()    
 
 i=0
@@ -165,13 +166,9 @@ i=process("EinarBil-2K4",result,freq,val,res2,i)
 i=process("EinarBil-2K6",result,freq,val,res2,i)
 i=process("EinarBil-2K8",result,freq,val,res2,i)
 
-isabel_plot(res,res2,"Glass","Alum")
-#ax.plot(freq,val,color='r')
+isabel_plot(res,res2,"Glass","Alum",'result.png')
 
-#ax.set_ylim(bottom=0)
-#ax.set_ybound(upper=50)
-#ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
-plt.show(f)
+
 
 
 
