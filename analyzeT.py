@@ -140,3 +140,15 @@ ax.set_ylim(bottom=0)
 ax.set_ybound(upper=50)
 ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
 plt.show(f)
+
+
+def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
+    plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
+    plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
+    plt.ylim(0,50) #should work as set_ylim and set_ybound in one
+    plt.title('insert your title here')
+    plt.xlabel('insert x label here')
+    plt.ylabel('insert y label here')
+    plt.legend() #do nothing here
+    plt.show()
+    
