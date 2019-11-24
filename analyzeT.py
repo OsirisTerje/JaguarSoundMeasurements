@@ -89,14 +89,35 @@ def process(file,result,freqa,vala,res,i):
     return i
 
 
-def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
+def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult):
+    #defines the figure
+    plt.figure(1, figsize=(12,10))
+    plt.suptitle('Relative sine wave noise injection Jaguar I-Pace')
+    #removes unnecessary axes
+    ax = plt.subplot(111)    
+    ax.spines["top"].set_visible(False)    
+    ax.spines["bottom"].set_visible(False)    
+    ax.spines["right"].set_visible(False)    
+    ax.spines["left"].set_visible(False)  
+     
     plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
     plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
+    plt.grid(color='lightgrey', ls = '--')
+    
+    #fixing the y-axis
     plt.ylim(0,50) #should work as set_ylim and set_ybound in one
-    plt.title('Relative sine wave noise injection Jaguar I-Pace')
+    plt.yticks(range(0,51,1), [str(x)  if x%10 == 0 else ' ' for x in range(0,51,1)]) #defines ticks, with label at only each 10th
+    
+    #fixing the x-axis
+    plt.xlim(800, 2600)
+    plt.xticks(range(800,2601,200))
+               
+    #fixing the labels
     plt.xlabel('Frequency')
-    plt.ylabel('dB')
+    plt.ylabel('dB', rotation='horizontal', position=(0.5,0.5))
+    
     plt.legend() #do nothing here
+    plt.savefig(nameOfResult,format='png')
     plt.show()    
 
 i=0
@@ -145,13 +166,9 @@ i=process("EinarBil-2K4",result,freq,val,res2,i)
 i=process("EinarBil-2K6",result,freq,val,res2,i)
 i=process("EinarBil-2K8",result,freq,val,res2,i)
 
-isabel_plot(res,res2,"Glass","Alum")
-#ax.plot(freq,val,color='r')
+isabel_plot(res,res2,"Glass","Alum",'result.png')
 
-#ax.set_ylim(bottom=0)
-#ax.set_ybound(upper=50)
-#ax.text(1000,1000,"Relative sine wave noise injection Jaguar I-Pace.  Glass roof is blue, hard alum is red")
-plt.show(f)
+
 
 
 
