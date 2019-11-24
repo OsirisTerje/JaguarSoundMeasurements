@@ -99,16 +99,22 @@ def isabel_plot(res1, res2, name_of_graph1, name_of_graph2):
     ax.spines["bottom"].set_visible(False)    
     ax.spines["right"].set_visible(False)    
     ax.spines["left"].set_visible(False)  
-    
-    
-    
+     
     plt.plot(res1[:,0], res1[:,1], c='b', label=name_of_graph1)
     plt.plot(res2[:,0], res2[:,1], c='r', label=name_of_graph2)
     plt.grid(color='lightgrey', ls = '--')
+    
+    #fixing the y-axis
     plt.ylim(0,50) #should work as set_ylim and set_ybound in one
     plt.yticks(range(0,51,1), [str(x)  if x%10 == 0 else ' ' for x in range(0,51,1)]) #defines ticks, with label at only each 10th
+    
+    #fixing the x-axis
+    plt.xlim(800, 3000)
+    plt.xticks(range(800,3001,200)
+               
+    #fixing the labels
     plt.xlabel('Frequency')
-    plt.ylabel('dB')
+    plt.ylabel('dB', rotation='horizontal', position=(1,1))
     
     plt.legend() #do nothing here
     plt.show()    
