@@ -31,7 +31,7 @@ def plotFFT(freqArray,fourier,filename,idx,maxfr):
     magn = 10*np.log10(abs(fourier))
     start = int(maxfr-50)
     stop = idx*10
-    plt.plot(freqArray[start:stop]/1000, magn[start:stop] , color='k', linewidth=0.02)
+    plt.plot(freqArray[start:stop]/1000, magn[start:stop] , color='k', linewidth=0.2)
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power (dB)')
     plt.savefig(filename+".png")
