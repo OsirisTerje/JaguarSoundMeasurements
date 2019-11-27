@@ -33,7 +33,7 @@ def plotFFT(freqArray,fourier,filename,idx):
     plt.plot(freqArray[start:stop]/1000, magn[start:stop] , color='k', linewidth=0.02)
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power (dB)')
-    plt.savefig('Results/'+filename+".png")
+    plt.savefig(filename+".png")
     plt.show()
     
 
@@ -55,7 +55,7 @@ def calcFFT(channel,rate,frate):
     # print ("Length of freqArray "+str(len(freqArray)))
     #print ("Max Value "+str('%.2f'%maxValue)+ " at "+str('%.2f'%maxFreq)+" Hz")
     #print ("Max Value 2 "+str(maxVal))
-    return fourier,freqs,idx,maxFreq,maxVal,
+    return fourier,freqs*frate,idx,maxFreq,maxVal,
 
 i=0
 
