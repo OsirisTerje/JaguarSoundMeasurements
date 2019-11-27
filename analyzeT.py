@@ -26,9 +26,10 @@ def printinfo(afile):
     print ("Sample width "+str(afile.sample_width))
     print("Channels "+str(afile.channels))
 
-def plotFFT(freqArray,fourier,filename,idx):
+def plotFFT(freqArray,fourier,filename,idx,maxfr):
+    plt.suptitle(filename+'   %.0f Hz'%maxfr)
     magn = 10*np.log10(abs(fourier))
-    start = 1000
+    start = int(maxfr-50)
     stop = idx*10
     plt.plot(freqArray[start:stop]/1000, magn[start:stop] , color='k', linewidth=0.02)
     plt.xlabel('Frequency (kHz)')
@@ -73,7 +74,7 @@ def process(file,result,res,i):
 
     # FFT
     fourier,freqArray,idx,maxfr,maxval = calcFFT(channel2,rate,sound.frame_rate)
-    plotFFT(freqArray,fourier,file,idx)
+    plotFFT(freqArray,fourier,file,idx,maxfr)
     level = 10*np.log10(fourier)
     maxv = max(level.real)
     # smaxv = str('%.2f'%maxv)
