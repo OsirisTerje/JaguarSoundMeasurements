@@ -33,7 +33,7 @@ def plotFFT(freqArray,fourier,filename,idx):
     plt.plot(freqArray[start:stop]/1000, magn[start:stop] , color='k', linewidth=0.02)
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power (dB)')
-    plt.savefig(filename+".png")
+    plt.savefig('Results/'+filename+".png")
     plt.show()
     
 
@@ -66,14 +66,14 @@ def process(file,result,res,i):
     #read wav file
     rate,audData=scipy.io.wavfile.read(file+".wav")
 
-    # channel1=audData[:,0] #left
+    channel1=audData[:,0] #left
     channel2=audData[:,1] #right
     # time = np.arange(0, float(audData.shape[0]), 1) / rate
     # plotTimeDomain(time,channel1,channel2)
 
     # FFT
     fourier,freqArray,idx,maxfr,maxval = calcFFT(channel2,rate,sound.frame_rate)
-    # plotFFT(freqArray,fourier,file,idx)
+    plotFFT(freqArray,fourier,file,idx)
     level = 10*np.log10(fourier)
     maxv = max(level.real)
     # smaxv = str('%.2f'%maxv)
@@ -115,7 +115,7 @@ def isabel_plot(res1, res2, name_of_graph1, name_of_graph2,nameOfResult,startfre
     plt.ylabel('dB', rotation='horizontal', position=(0.5,0.5))
     
     plt.legend() #do nothing here
-    plt.savefig(nameOfResult,format='png')
+    plt.savefig('Results/'+nameOfResult,format='png')
     plt.show()    
 
 i=0
