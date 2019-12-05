@@ -44,17 +44,17 @@ Note:  Have only the data in for up to 1.5 kHz
 
 Channel 1:
 
-![](result.png)
+![](./Results/result.png)
 
 Channel 2:
-![](result-ch2.png)
+![](./Results/result-ch2.png)
 
 ### Results from second set of measurements, where we measure from 100 Hz to 1 kHz
 
 Channel 1:
 
-![](resultLF.png)
+![](./Results/resultLF.png)
 
 Channel 2:
 
-![](resultLF-ch2.png)
+![](./Results/resultLF-ch2.png)
